@@ -25,14 +25,14 @@ RUN apt-get install -y nodejs
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Copy the project files into the container
-COPY . /production/cribsearch
+COPY . /production/verdura
 
 # Set the laravel web folder
-ARG WEB_PATH=/production/cribsearch/public
+ARG WEB_PATH=/production/verdura/public
 ENV WEB_DOCUMENT_ROOT=$WEB_PATH
 
 # set the correct laravel app foler
-ARG LARAVEL_PATH=/production/cribsearch
+ARG LARAVEL_PATH=/production/verdura
 WORKDIR $LARAVEL_PATH
 
 
