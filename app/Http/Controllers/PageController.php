@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Plant;
+use App\Models\Team;
 use Illuminate\View\View;
 
 class PageController extends Controller
@@ -29,6 +30,10 @@ class PageController extends Controller
 
     public function about(): View
     {
-        return view('pages.about');
+        $teamMembers = Team::where('is_active', true)
+            ->orderBy('sort_order', 'asc')
+            ->get();
+
+        return view('pages.about', compact('teamMembers'));
     }
 }
