@@ -85,6 +85,8 @@
   <div class="wrap footer-inner">
     <div>&copy; {{ date('Y') }} <strong>Verdura Landscapes</strong>. All rights reserved.</div>
     <div class="btc-badge"><span class="sym">✦</span> Landscape Design &amp; Plant Nursery, Kenya</div>
+    <span class="btc-badge"><span class="sym">₿</span> Bitcoin accepted</span>
+    <div>Juja, Kenya · +254 114 936 390 · <a href="mailto:verduralandscapekenya@gmail.com">verduralandscapekenya@gmail.com</a></div>
   </div>
 </footer>
 

@@ -42,7 +42,7 @@ class PlantController extends Controller
 
         $query = Plant::where('category', $category)->where('is_active', true);
 
-        // Apply backend filter when form is submitted
+        // Apply search filter
         if ($request->filled('search')) {
             $searchTerm = $request->search;
             $query->where(function($q) use ($searchTerm) {
@@ -51,7 +51,29 @@ class PlantController extends Controller
             });
         }
 
-        $plants = $query->get();
+        // Apply sorting options
+        switch ($request->get('sort')) {
+            case 'name_asc':
+                $query->orderBy('name', 'asc');
+                break;
+            case 'name_desc':
+                $query->orderBy('name', 'desc');
+                break;
+            case 'price_asc':
+                $query->orderBy('price', 'asc');
+                break;
+            case 'price_desc':
+                $query->orderBy('price', 'desc');
+                break;
+            case 'latest':
+                $query->latest();
+                break;
+            default:
+                $query->orderBy('name', 'asc')->orderBy('name', 'asc');
+                break;
+        }
+
+        $plants = $query->paginate(12)->withQueryString();
 
         return view('pages.plants.category', compact('plants', 'title', 'category'));
     }
