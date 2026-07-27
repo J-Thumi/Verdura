@@ -1,7 +1,19 @@
 @extends('layouts.app')
 
 @section('title', 'Verdura Landscapes | Landscape Architecture & Plant Nursery')
-
+@push('styles')
+    <!-- Tailwind CSS (CDN for standalone usage; remove if compiled in style.css) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        [x-cloak] { display: none !important; }
+    </style>
+@endpush
+@push('scripts')
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- Google Model Viewer for Interactive 3D Web Rendering -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+@endpush
 @section('content')
 <section class="hero" id="top">
   <div class="wrap hero-inner">
