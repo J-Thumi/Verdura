@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Plant;
+use App\Models\Project;
 use App\Models\Team;
 use Illuminate\View\View;
 
@@ -20,7 +21,12 @@ class PageController extends Controller
 
     public function work(): View
     {
-        return view('pages.work');
+        $projects = Project::where('is_active', true)
+            ->orderBy('sort_order', 'asc')
+            ->orderBy('completed_at', 'desc')
+            ->get();
+
+        return view('pages.work', compact('projects'));
     }
 
     public function areas(): View

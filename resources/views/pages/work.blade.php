@@ -10,24 +10,35 @@
         <span class="eyebrow">Recently completed</span>
         <h2>From plan to finished garden</h2>
       </div>
-      <p>A residential compound we took from schematic design through to planting and lighting installation.</p>
+      <p>Explore our recent landscape architecture, softscaping, and cabro paving projects across Kenya.</p>
     </div>
-    <div class="gallery-grid">
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=800&q=80" alt="Completed Garden Project">
-        <div class="cap">
-          <span class="tag">Residential Landscape</span>
-          <h4>Private Compound Landscaping</h4>
-        </div>
+
+    @if($projects->count() > 0)
+      <div class="gallery-grid">
+        @foreach($projects as $project)
+          <div class="gallery-item">
+            <img 
+              src="{{ $project->cover_image_url }}" 
+              alt="{{ $project->title }}"
+              onerror="this.onerror=null; this.src='https://placehold.co/800x600/1F3B2C/F7F2E4?text=Project+Photo';"
+            >
+            <div class="cap">
+              <span class="tag">{{ $project->category }}</span>
+              <h4>{{ $project->title }}</h4>
+              @if($project->location)
+                <small style="color: rgba(255,255,255,0.8); display: block; margin-top: 4px;">
+                  📍 {{ $project->location }}
+                </small>
+              @endif
+            </div>
+          </div>
+        @endforeach
       </div>
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=800&q=80" alt="Plant Installation">
-        <div class="cap">
-          <span class="tag">Plant Installation</span>
-          <h4>Botanical Layout &amp; Softscaping</h4>
-        </div>
+    @else
+      <div style="padding: 40px 0; text-align: center; color: #55554c;">
+        <p>No project showcase entries added yet.</p>
       </div>
-    </div>
+    @endif
   </div>
 </section>
 @endsection
