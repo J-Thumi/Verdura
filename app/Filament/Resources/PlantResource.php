@@ -67,7 +67,14 @@ class PlantResource extends Resource
                             ->directory('plants')
                             ->visibility('public')
                             ->imageEditor()
-                            ->columnSpanFull(),
+                            ->columnSpanFull()
+                            // 1. Prevent Filament from stripping the full URL when saving unchanged
+                            ->dehydrateStateUsing(function ($state, $record) {
+                                if (blank($state) && $record && str_starts_with($record->image_url ?? '', 'http')) {
+                                    return $record->image_url;
+                                }
+                                return $state;
+                            }),
 
                         Forms\Components\Toggle::make('is_featured')
                             ->label('Featured Specimen (Show on Hero Section)')
