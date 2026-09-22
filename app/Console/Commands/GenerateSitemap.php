@@ -28,7 +28,7 @@ class GenerateSitemap extends Command
     {
         $this->info('Generating sitemap...');
 
-        SitemapGenerator::create('https://jostech.co.ke')
+        SitemapGenerator::create('https://verdura.jostech.co.ke')
             ->writeToFile(public_path('sitemap.xml'));
 
         $this->info('Sitemap generated successfully at ' . public_path('sitemap.xml'));
