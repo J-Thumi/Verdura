@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 class Plant extends Model
 {
     use HasFactory;
@@ -21,6 +22,7 @@ class Plant extends Model
         'image_url',
         'is_featured',
         'is_active',
+        'slug'
     ];
 
     protected $casts = [
@@ -56,6 +58,21 @@ class Plant extends Model
             Cache::forget('featured_specimen');
             Cache::forget('all_active_plants');
         });
+
+        static::creating(function (Plant $plant) {
+            if (empty($plant->slug)) {
+                $baseSlug = Str::slug($plant->name);
+                $slug = $baseSlug;
+                $counter = 1;
+
+                while (static::where('slug', $slug)->exists()) {
+                    $slug = "{$baseSlug}-{$counter}";
+                    $counter++;
+                }
+
+                $plant->slug = $slug;
+            }
+        });
     }
 
     
@@ -67,5 +84,13 @@ class Plant extends Model
                 ? Storage::url($value)
                 : ($value ?: 'https://via.placeholder.com/400x300?text=Plant+Photo')
         );
+    }
+
+    /**
+     * Use 'slug' for Route Model Binding instead of 'id'
+     */
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
     }
 }
