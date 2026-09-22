@@ -20,7 +20,7 @@
     <div>
       <span class="eyebrow">Landscape Design &amp; Plant Nursery, Kenya</span>
       <h1>Landscapes built on <em>the right plant,</em><br>in the right ground.</h1>
-      <p>Verdura Landscapes is run by Landscape Arch Dennis Githinji, a landscape architect supplying and planting quality landscape plants for homes, estates, and commercial grounds across Kenya.</p>
+      <p>Verdura Landscapes is led by a collaborative team of landscape architects, architects, quantity surveyors, and contractors who work directly with homeowners, developers, and site managers from the first sketch to the last plant in the ground. Rather than a generic supplier, every plant sold comes with an understanding of how it will actually perform on your site: sun exposure, soil, water access, and the design intent behind the space.</p>
       <div class="hero-ctas">
         <a class="btn-primary" href="https://wa.me/254114936390?text=Hi%20Landscape%20Arch%20Dennis%2C%20I%27d%20like%20to%20enquire%20about%20plants%20%2F%20landscaping." target="_blank" rel="noopener">
           Chat on WhatsApp
