@@ -77,4 +77,23 @@ class PlantController extends Controller
 
         return view('pages.plants.category', compact('plants', 'title', 'category'));
     }
+    /**
+     * Display specific plant details by slug.
+     */
+    public function show(Plant $plant): View
+    {
+        if (!$plant->is_active) {
+            abort(404);
+        }
+
+        // Fetch related plants in the same category for display
+        $relatedPlants = Plant::where('category', $plant->category)
+            ->where('is_active', true)
+            ->where('id', '!=', $plant->id)
+            ->inRandomOrder()
+            ->take(4)
+            ->get();
+
+        return view('pages.plants.show', compact('plant', 'relatedPlants'));
+    }
 }
