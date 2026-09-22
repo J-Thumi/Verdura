@@ -13,6 +13,7 @@
     <meta name="author" content="Verdura Landscapes">
     <meta name="robots" content="@yield('meta_robots', 'index, follow')">
     <link rel="canonical" href="@yield('canonical', url()->current())">
+    <link rel="icon" href="{{ asset('images/plant.png') }}" type="image/x-icon">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="@yield('og_type', 'website')">
